@@ -1,23 +1,97 @@
-import React from 'react';
-import { StyleSheet, TouchableOpacity, Text } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+import CalculatorButton from './CalculatorButton';
 
-export default function CalculatorButton({ onPress, value }) {
+export default function CalculatorScreen() {
+  const [input, setInput] = useState('');
+
+  const handleButtonPress = (value) => {
+    setInput(input + value);
+  };
+
+  const clearInput = () => {
+    setInput('');
+  };
+
+  const calculateResult = () => {
+    try {
+      // Remplacer les symboles × par * et ÷ par /
+      const expression = input.replace('×', '*').replace('÷', '/');
+      setInput(eval(expression).toString());
+    } catch (error) {
+      setInput('Error');
+    }
+  };
+
   return (
-    <TouchableOpacity style={styles.button} onPress={() => onPress(value)}>
-      <Text style={styles.buttonText}>{value}</Text>
-    </TouchableOpacity>
+    <View style={styles.container}>
+      <Text style={styles.input}>{input}</Text>
+      <View style={styles.buttons}>
+        <CalculatorButton onPress={handleButtonPress} value="7" />
+        <CalculatorButton onPress={handleButtonPress} value="8" />
+        <CalculatorButton onPress={handleButtonPress} value="9" />
+        <CalculatorButton onPress={handleButtonPress} value="+" />
+      </View>
+      <View style={styles.buttons}>
+        <CalculatorButton onPress={handleButtonPress} value="4" />
+        <CalculatorButton onPress={handleButtonPress} value="5" />
+        <CalculatorButton onPress={handleButtonPress} value="6" />
+        <CalculatorButton onPress={handleButtonPress} value="-" />
+      </View>
+      <View style={styles.buttons}>
+        <CalculatorButton onPress={handleButtonPress} value="1" />
+        <CalculatorButton onPress={handleButtonPress} value="2" />
+        <CalculatorButton onPress={handleButtonPress} value="3" />
+        <CalculatorButton onPress={handleButtonPress} value="×" />
+      </View>
+      <View style={styles.buttons}>
+        <CalculatorButton onPress={handleButtonPress} value="0" />
+        <CalculatorButton onPress={handleButtonPress} value="." />
+        <TouchableOpacity style={styles.calculateButton} onPress={calculateResult}>
+          <Text style={styles.calculateButtonText}>=</Text>
+        </TouchableOpacity>
+        <CalculatorButton onPress={handleButtonPress} value="÷" />
+      </View>
+      <TouchableOpacity style={styles.clearButton} onPress={clearInput}>
+        <Text style={styles.clearButtonText}>C</Text>
+      </TouchableOpacity>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  button: {
-    backgroundColor: '#D9D9D9',
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#f2f2f2',
+  },
+  input: {
+    fontSize: 40,
+    marginBottom: 20,
+  },
+  buttons: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+  },
+  clearButton: {
+    backgroundColor: '#FF3B30',
     padding: 20,
     margin: 5,
     borderRadius: 50,
   },
-  buttonText: {
-    color: '#222',
+  calculateButton: {
+    backgroundColor: '#4CD964',
+    padding: 20,
+    margin: 5,
+    borderRadius: 50,
+  },
+  clearButtonText: {
+    color: 'white',
+    fontSize: 20,
+  },
+  calculateButtonText: {
+    color: 'white',
     fontSize: 30,
   },
 });
