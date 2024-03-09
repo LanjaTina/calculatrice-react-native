@@ -6,7 +6,13 @@ export default function CalculatorScreen() {
   const [input, setInput] = useState('');
 
   const handleButtonPress = (value) => {
-    setInput(input + value);
+    if (value === '×') {
+      setInput(input + '*');
+    } else if (value === '/') {
+      setInput(input + '/');
+    } else {
+      setInput(input + value);
+    }
   };
 
   const clearInput = () => {
@@ -15,7 +21,7 @@ export default function CalculatorScreen() {
 
   const calculateResult = () => {
     try {
-      setInput(eval(input).toString());
+      setInput(eval(input.replace(/×/g, '*').replace(/÷/g, '/')).toString());
     } catch (error) {
       setInput('Error');
     }
