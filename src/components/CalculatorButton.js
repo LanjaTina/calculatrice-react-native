@@ -11,13 +11,13 @@ export default function CalculatorButton({ onPress, value }) {
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: 'blue',
+    backgroundColor: '#D9D9D9',
     padding: 20,
     margin: 5,
-    borderRadius: 5,
+    borderRadius: 50,
   },
   buttonText: {
-    color: 'white',
-    fontSize: 20,
+    color: '#222',
+    fontSize: 30,
   },
 });
