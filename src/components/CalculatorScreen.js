@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Text, TouchableOpacity, StatusBar } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import CalculatorButton from './CalculatorButton';
 
 export default function CalculatorScreen() {
@@ -29,7 +29,6 @@ export default function CalculatorScreen() {
 
   return (
     <View style={styles.container}>
-      <StatusBar hidden />
       <Text style={styles.input}>{input}</Text>
       <View style={styles.buttons}>
         <CalculatorButton onPress={handleButtonPress} value="7" />
@@ -70,7 +69,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#f2f2f2',
-    paddingHorizontal: 0, // Supprimer les marges horizontales
+    paddingHorizontal: 20, // Ajuster l'espace sur les côtés
   },
   input: {
     fontSize: 40,
@@ -79,6 +78,7 @@ const styles = StyleSheet.create({
   buttons: {
     flexDirection: 'row',
     flexWrap: 'wrap',
+    marginHorizontal: -5, // Supprimer la marge entre les boutons
   },
   clearButton: {
     backgroundColor: '#FF3B30',
