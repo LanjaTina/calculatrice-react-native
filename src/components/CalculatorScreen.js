@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#f2f2f2',
-    paddingHorizontal: 20, // Ajuster l'espace sur les côtés
+    paddingHorizontal: 20,
   },
   input: {
     fontSize: 40,
