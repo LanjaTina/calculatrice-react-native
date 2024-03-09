@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
   buttons: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    marginHorizontal: -5, // Supprimer la marge entre les boutons
+    marginHorizontal: -5, 
   },
   clearButton: {
     backgroundColor: '#FF3B30',
