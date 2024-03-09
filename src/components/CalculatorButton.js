@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, TouchableOpacity, Text } from 'react-native';
 
+
 export default function CalculatorButton({ onPress, value }) {
   return (
     <TouchableOpacity style={styles.button} onPress={() => onPress(value)}>
@@ -8,6 +9,8 @@ export default function CalculatorButton({ onPress, value }) {
     </TouchableOpacity>
   );
 }
+
+
 
 const styles = StyleSheet.create({
   button: {
