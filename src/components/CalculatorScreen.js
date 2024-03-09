@@ -5,6 +5,8 @@ import CalculatorButton from './CalculatorButton';
 export default function CalculatorScreen() {
   const [input, setInput] = useState('');
 
+  
+
   const handleButtonPress = (value) => {
     if (value === '×') {
       setInput(input + '*');
@@ -18,6 +20,7 @@ export default function CalculatorScreen() {
   const clearInput = () => {
     setInput('');
   };
+
 
   const calculateResult = () => {
     try {
